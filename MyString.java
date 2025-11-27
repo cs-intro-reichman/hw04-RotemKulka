@@ -33,19 +33,22 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        for (int i=0; i<str1.length(); i++){
-            if (str2.charAt(0)==str1.charAt(i)){
-                String newStr1 = "";
-                for(int j=0; j<str2.length(); j++){
-                    newStr1 = newStr1 + str1.charAt(i+j);
-                }
-                boolean contains = newStr1.equals(str2);
-                if (contains){
-                    return true;
-                }
-            }
-
-        }
+    int n1 = str1.length();
+    int n2 = str2.length();
+    if (n2 > n1) {
         return false;
     }
+    for (int i = 0; i <= n1 - n2; i++) {
+        boolean match = true;
+        for (int j = 0; j < n2; j++) {
+            if (str1.charAt(i + j) != str2.charAt(j)) {
+                match = false;
+            }
+        }
+        if (match) {
+            return true;
+        }
+    }
+    return false;
+}
 }
